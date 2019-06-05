@@ -10,6 +10,11 @@ There is no CSS included, which means that you need to add your own flavor for i
 Just like with tostini - no one will tell you how it should look like ;)
 
 
+## Demo
+
+https://codesandbox.io/embed/vtostini-demo-btc4g
+
+
 ## Getting Started
 
 ### Prerequisites
