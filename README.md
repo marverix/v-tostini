@@ -97,7 +97,7 @@ You can display HTML-based message. Just set `html: true` flag:
 ```js
 this.$tostini({
   message: 'Wow! Great <b>success</b>!',
-  duration: 2000
+  html: true
 });
 ```
 
