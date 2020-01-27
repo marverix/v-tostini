@@ -24,6 +24,9 @@ function bake(config) {
     config.type = 'default';
   }
 
+  // HTML support?
+  config.html = !!config.html;
+
   // Emit
   bus.$emit('tostini-bake', config);
 }

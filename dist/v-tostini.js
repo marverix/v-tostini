@@ -85,18 +85,21 @@
         {
           class: 'tostini-plate'
         },
-        this.tostinis.map(tostini =>
-          h(
+        this.tostinis.map( (tostini) => {
+          const domProps = {};
+          domProps[tostini.html ? 'innerHTML' : 'innerText'] = tostini.message;
+
+          return h(
             'div',
             {
               class: 'tostini',
               attrs: {
                 'data-type': tostini.type
-              }
-            },
-            [tostini.message]
-          )
-        )
+              },
+              domProps
+            }
+          );
+        })
       );
     }
   };
@@ -124,6 +127,9 @@
     if (config.type == null) {
       config.type = 'default';
     }
+
+    // HTML support?
+    config.html = !!config.html;
 
     // Emit
     bus.$emit('tostini-bake', config);

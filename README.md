@@ -9,11 +9,9 @@ _v-Tostini_ is really plain toast notifications mechanism for Vue.js 2.x.
 There is no CSS included, which means that you need to add your own flavor for it.
 Just like with tostini - no one will tell you how it should look like ;)
 
-
 ## Demo
 
 https://codesandbox.io/embed/vtostini-demo-btc4g
-
 
 ## Getting Started
 
@@ -21,41 +19,40 @@ https://codesandbox.io/embed/vtostini-demo-btc4g
 
 This package is using [UMD](https://github.com/umdjs/umd/blob/master/templates/returnExportsGlobal.js) pattern.
 
-
 ### Usage
 
 1. Install it (or download):
 
-```sh
-npm i v-tostini
-```
+   ```sh
+   npm i v-tostini
+   ```
 
-2. Require in your project:
+1. Require in your project:
 
-```js
-const vTostini = require('v-tostini');
-```
+   ```js
+   const vTostini = require('v-tostini');
+   ```
 
-3. Tell Vue to use it:
+1. Tell Vue to use it:
 
-```js
-Vue.use(vTostini);
-```
+   ```js
+   Vue.use(vTostini);
+   ```
 
-4. Now simply place `tostini-plate` in your HTML:
+1. Now simply place `tostini-plate` in your HTML:
 
-```html
-<tostini-plate />
-```
+   ```html
+   <tostini-plate />
+   ```
 
-5. Call from any Vue instance:
-```js
-this.$tostini({
-    message: 'Delicious!',
-    type: 'success'
-});
-```
+1. Call from any Vue instance:
 
+   ```js
+   this.$tostini({
+     message: 'Delicious!',
+     type: 'success'
+   });
+   ```
 
 ### Features
 
@@ -71,10 +68,9 @@ Above will be the same as:
 
 ```js
 this.$tostini({
-    message: 'Yupi!'
+  message: 'Yupi!'
 });
 ```
-
 
 #### Notification Duration
 
@@ -85,16 +81,27 @@ Of course you can set your own duration:
 
 ```js
 this.$tostini({
-    message: 'This message will be visible for 2s.',
-    duration: 2000
+  message: 'This message will be visible for 2s.',
+  duration: 2000
 });
 ```
-
 
 #### Types
 
 `type` field in toastini config is set as `data-type` in added tostini to tostini-plate. So basicly it's up to you how you will use it.
 
+#### HTML Support
+
+You can display HTML-based message. Just set `html: true` flag:
+
+```js
+this.$tostini({
+  message: 'Wow! Great <b>success</b>!',
+  duration: 2000
+});
+```
+
+Caution! Sanitization needs to be done on your side!
 
 ### Exmaple CSS
 
@@ -105,7 +112,6 @@ So this is CSS that I'm using. As you can see I'm using types:
 * error
 * warning
 * info
-
 
 ```css
 .tostini-plate {
@@ -138,7 +144,6 @@ So this is CSS that I'm using. As you can see I'm using types:
   background: rgba(0, 147, 204, 0.95);
 }
 ```
-
 
 ## License
 

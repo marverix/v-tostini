@@ -71,18 +71,21 @@ const component = {
       {
         class: 'tostini-plate'
       },
-      this.tostinis.map(tostini =>
-        h(
+      this.tostinis.map( (tostini) => {
+        const domProps = {};
+        domProps[tostini.html ? 'innerHTML' : 'innerText'] = tostini.message;
+
+        return h(
           'div',
           {
             class: 'tostini',
             attrs: {
               'data-type': tostini.type
-            }
-          },
-          [tostini.message]
-        )
-      )
+            },
+            domProps
+          }
+        );
+      })
     );
   }
 };
