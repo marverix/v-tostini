@@ -1,5 +1,5 @@
-import component from "./component";
-import bake from "./bake";
+import component from './component';
+import bake from './bake';
 
 /**
  * Plugin

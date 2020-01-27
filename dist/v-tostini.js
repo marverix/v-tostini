@@ -20,7 +20,7 @@
    * Here will appear all delicious tostinis (or something else :) )
    */
   const component = {
-    name: "tostini-plate",
+    name: 'tostini-plate',
 
     data() {
       return {
@@ -76,22 +76,22 @@
     },
 
     mounted() {
-      bus.$on("tostini-bake", this.bake);
+      bus.$on('tostini-bake', this.bake);
     },
 
     render(h) {
       return h(
-        "div",
+        'div',
         {
-          class: "tostini-plate"
+          class: 'tostini-plate'
         },
         this.tostinis.map(tostini =>
           h(
-            "div",
+            'div',
             {
-              class: "tostini",
+              class: 'tostini',
               attrs: {
-                "data-type": tostini.type
+                'data-type': tostini.type
               }
             },
             [tostini.message]
@@ -106,7 +106,7 @@
    */
   function bake(config) {
     // Handling config as string
-    if (typeof config === "string") {
+    if (typeof config === 'string') {
       config = {
         message: config
       };
@@ -122,11 +122,11 @@
 
     // Type
     if (config.type == null) {
-      config.type = "default";
+      config.type = 'default';
     }
 
     // Emit
-    bus.$emit("tostini-bake", config);
+    bus.$emit('tostini-bake', config);
   }
 
   /**
