@@ -1,4 +1,4 @@
-import bus from "./bus";
+import bus from './bus';
 
 /**
  * Component
@@ -6,7 +6,7 @@ import bus from "./bus";
  * Here will appear all delicious tostinis (or something else :) )
  */
 const component = {
-  name: "tostini-plate",
+  name: 'tostini-plate',
 
   data() {
     return {
@@ -62,22 +62,22 @@ const component = {
   },
 
   mounted() {
-    bus.$on("tostini-bake", this.bake);
+    bus.$on('tostini-bake', this.bake);
   },
 
   render(h) {
     return h(
-      "div",
+      'div',
       {
-        class: "tostini-plate"
+        class: 'tostini-plate'
       },
       this.tostinis.map(tostini =>
         h(
-          "div",
+          'div',
           {
-            class: "tostini",
+            class: 'tostini',
             attrs: {
-              "data-type": tostini.type
+              'data-type': tostini.type
             }
           },
           [tostini.message]

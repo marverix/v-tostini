@@ -1,11 +1,11 @@
-import bus from "./bus";
+import bus from './bus';
 
 /**
  * Bake
  */
 function bake(config) {
   // Handling config as string
-  if (typeof config === "string") {
+  if (typeof config === 'string') {
     config = {
       message: config
     };
@@ -21,11 +21,11 @@ function bake(config) {
 
   // Type
   if (config.type == null) {
-    config.type = "default";
+    config.type = 'default';
   }
 
   // Emit
-  bus.$emit("tostini-bake", config);
+  bus.$emit('tostini-bake', config);
 }
 
 export default bake;
