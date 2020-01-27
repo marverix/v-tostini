@@ -5,22 +5,25 @@ import bus from './bus';
  */
 function bake(config) {
   // Handling config as string
-  if(typeof config === 'string') {
+  if (typeof config === 'string') {
     config = {
       message: config
     };
   }
-  
+
   // Calculate duration
-  if(config.duration == null) {
-    config.duration = Math.max(2000, 1000 * config.message.length / 12.84 + 400);
+  if (config.duration == null) {
+    config.duration = Math.max(
+      2000,
+      (1000 * config.message.length) / 12.84 + 400
+    );
   }
-  
+
   // Type
-  if(config.type == null) {
+  if (config.type == null) {
     config.type = 'default';
   }
-  
+
   // Emit
   bus.$emit('tostini-bake', config);
 }

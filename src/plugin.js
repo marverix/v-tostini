@@ -3,11 +3,11 @@ import bake from './bake';
 
 /**
  * Plugin
- * 
+ *
  * Definition of plugin itself
  */
 const plugin = {
-  install: function(Vue) {
+  install(Vue) {
     // Define component
     Vue.component(component.name, component);
 
