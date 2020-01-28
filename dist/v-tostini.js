@@ -1,4 +1,4 @@
-/* v-tostini v1.2.0 | (c) Marek Sierociński and contributors | https://github.com/marverix/v-tostini/blob/master/LICENSE.md */
+/* v-tostini v1.2.1 | (c) Marek Sierociński and contributors | https://github.com/marverix/v-tostini/blob/master/LICENSE.md */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('vue')) :
   typeof define === 'function' && define.amd ? define(['vue'], factory) :
