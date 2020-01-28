@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.2.1 (2020-01-28)
+
+* Removed `src` from `.npmignore`
+
 ## 1.2.0 (2020-01-28)
 
 * Added Babel to Rollup - so now targets are:
