@@ -9,9 +9,6 @@ jsdoc.json
 test/
 coverage/
 
-# Source files
-src/
-
 # Rollup config
 rollup.config.js
 
