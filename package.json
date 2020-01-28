@@ -26,11 +26,15 @@
   },
   "homepage": "https://github.com/marverix/v-tostini#readme",
   "devDependencies": {
+    "@babel/cli": "^7.8.3",
+    "@babel/core": "^7.8.3",
+    "@babel/preset-env": "^7.8.3",
     "chai": "^4.1.2",
     "eslint": "^5.16.0",
     "husky": "^1.3.1",
     "mocha": "^5.1.1",
     "rollup": "^0.58.2",
+    "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-commonjs": "^9.3.4",
     "rollup-plugin-node-resolve": "^3.3.0",
     "rollup-plugin-uglify": "^3.0.0"

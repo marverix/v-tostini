@@ -2,6 +2,7 @@
 import commonjs from 'rollup-plugin-commonjs';
 import nodeResolve from 'rollup-plugin-node-resolve';
 import uglify from 'rollup-plugin-uglify';
+import babel from 'rollup-plugin-babel';
 
 import $package from './package.json';
 
@@ -49,7 +50,8 @@ var plugins = [
   }),
   commonjs({
     extensions: config.extensions
-  })
+  }),
+  babel(),
 ];
 
 var external = config.external;
