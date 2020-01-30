@@ -53,6 +53,36 @@ This package is using [UMD](https://github.com/umdjs/umd/blob/master/templates/r
      type: 'success'
    });
    ```
+   
+### Usage with Nuxt.js
+
+You can easely use tostini inside Nuxt.js by creating a plugin:
+```
+import Vue from 'vue'
+import tostini from 'v-tostini'
+
+Vue.use(tostini)
+
+// If you want to use tostini inside your store modules
+// the same way you use it in components
+// you will need to inject it
+export default (ctx, inject) => {
+  inject('tostini', Vue.prototype.$tostini)
+}
+```
+tostini supports >2%, IE11, Safari 10 but if your Nuxt project has different browser targets - you can easely compile it yourself from the available source. To do that you need to add `transpile` section to you nuxt.config.js build settings:
+
+```
+build: {
+    transpile: ['v-tostini']
+}
+```
+don't forget to target `src` folder inside the plugin
+
+```
+import Vue from 'vue'
+import tostini from 'v-tostini/src'
+```
 
 ### Features
 
