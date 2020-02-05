@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.3.1 (2020-02-05)
+
+* [Structure improvements](https://github.com/marverix/v-tostini/pull/18)
+
 ## 1.3.0 (2020-02-05)
 
 * [Added "close" handler to scoped slot](https://github.com/marverix/v-tostini/pull/17)
