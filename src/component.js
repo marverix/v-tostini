@@ -8,6 +8,12 @@ import bus from './bus';
 const component = {
   name: 'tostini-plate',
 
+  props: {
+    transitionName: {
+      type: String
+    }
+  },
+
   data() {
     return {
       tostinis: []
@@ -67,13 +73,22 @@ const component = {
 
   render(h) {
     return h(
-      'div',
-      this.tostinis.map(({ type, message, html }) => {
-        return this.$scopedSlots.default 
+      'transition-group',
+      {
+        class: 'tostini-plate',
+        props: {
+          name: this.transitionName,
+          tag: 'div'
+        }
+      },
+      this.tostinis.map(({ type, message, html }, index) => {
+        return this.$scopedSlots.default
           ? this.$scopedSlots.default({ type, message })
           : h(
             'div',
             {
+              class: 'tostini',
+              key: index,
               attrs: {
                 'data-type': type
               },
