@@ -133,6 +133,37 @@ this.$tostini({
 
 Caution! Sanitization needs to be done on your side!
 
+#### Custom Template
+
+It's possible to create custom template for your messages:
+
+```html
+<tostini-plate class="tostini-plate" v-slot="{ type, message }">
+  <div class="tostini" :data-type="type">
+    {{ message }}
+  </div>
+</tostini-plate>
+```
+
+#### Transitions
+
+You can specify transition name with:
+
+```html
+<tostini-plate transition-name="fade" />
+```
+
+#### Close Button in the Message
+
+```html
+<tostini-plate class="tostini-plate" v-slot="{ type, message, close }">
+  <div class="tostini" :data-type="type">
+    {{ message }}
+    <button @click="close">OK</button>
+  </div>
+</tostini-plate>
+```
+
 ### Exmaple CSS
 
 So this is CSS that I'm using. As you can see I'm using types:

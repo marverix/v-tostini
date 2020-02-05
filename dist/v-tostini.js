@@ -1,4 +1,4 @@
-/* v-tostini v1.2.1 | (c) Marek Sierociński and contributors | https://github.com/marverix/v-tostini/blob/master/LICENSE.md */
+/* v-tostini v1.3.0 | (c) Marek Sierociński and contributors | https://github.com/marverix/v-tostini/blob/master/LICENSE.md */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('vue')) :
   typeof define === 'function' && define.amd ? define(['vue'], factory) :
@@ -100,6 +100,21 @@
       }
     }
   });
+
+  function _defineProperty(obj, key, value) {
+    if (key in obj) {
+      Object.defineProperty(obj, key, {
+        value: value,
+        enumerable: true,
+        configurable: true,
+        writable: true
+      });
+    } else {
+      obj[key] = value;
+    }
+
+    return obj;
+  }
 
   var _core = createCommonjsModule(function (module) {
   var core = module.exports = { version: '2.6.11' };
@@ -537,6 +552,11 @@
 
   var component = {
     name: 'tostini-plate',
+    props: {
+      transitionName: {
+        type: String
+      }
+    },
     data: function data() {
       return {
         tostinis: []
@@ -591,17 +611,32 @@
       bus.$on('tostini-bake', this.bake);
     },
     render: function render(h) {
-      return h('div', {
-        class: 'tostini-plate'
-      }, this.tostinis.map(function (tostini) {
-        var domProps = {};
-        domProps[tostini.html ? 'innerHTML' : 'innerText'] = tostini.message;
-        return h('div', {
+      var _this2 = this;
+
+      return h('transition-group', {
+        class: 'tostini-plate',
+        props: {
+          name: this.transitionName,
+          tag: 'div'
+        }
+      }, this.tostinis.map(function (_ref, index) {
+        var id = _ref.id,
+            type = _ref.type,
+            message = _ref.message,
+            html = _ref.html;
+        return _this2.$scopedSlots.default ? _this2.$scopedSlots.default({
+          type: type,
+          message: message,
+          close: function close() {
+            return _this2._remove(id);
+          }
+        }) : h('div', {
           class: 'tostini',
+          key: index,
           attrs: {
-            'data-type': tostini.type
+            'data-type': type
           },
-          domProps: domProps
+          domProps: _defineProperty({}, html ? 'innerHTML' : 'innerText', message)
         });
       }));
     }
