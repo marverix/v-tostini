@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.3.0 (2020-02-05)
+
+* [Added "close" handler to scoped slot](https://github.com/marverix/v-tostini/pull/17)
+* [Added support for transitions](https://github.com/marverix/v-tostini/pull/16)
+* [Added support for custom templates](https://github.com/marverix/v-tostini/issues/15)
+
 ## 1.2.1 (2020-01-28)
 
 * Removed `src` from `.npmignore`
@@ -17,7 +23,7 @@
 
 ## 1.1.0 (2020-01-27)
 
-* Replaced template with render function (https://github.com/marverix/v-tostini/pull/7) - thanks @enkot
+* [Replaced template with render function](https://github.com/marverix/v-tostini/pull/7)
 * Added HTML support
 
 ## 1.0.0 (2018-12-23)
