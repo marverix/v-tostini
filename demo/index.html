@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>v-tostini demo</title>
+
+    <style>
+      .tostini-plate {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: auto !important;
+      }
+      .tostini-plate .tostini {
+        padding: 0.75rem;
+        width: calc(100vw - 3.5rem);
+        margin: 0.5rem auto;
+        max-width: 40rem;
+        color: white;
+      }
+      .tostini-plate .tostini[data-type="default"] {
+        background: rgba(0, 0, 0, 0.5);
+      }
+      .tostini-plate .tostini[data-type="success"] {
+        background: rgba(45, 148, 27, 0.95);
+      }
+      .tostini-plate .tostini[data-type="error"] {
+        background: rgba(148, 27, 27, 0.95);
+      }
+      .tostini-plate .tostini[data-type="warning"] {
+        background: rgba(216, 143, 9, 0.95);
+      }
+      .tostini-plate .tostini[data-type="info"] {
+        background: rgba(0, 147, 204, 0.95);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="demo"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
