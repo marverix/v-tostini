@@ -72,6 +72,8 @@ const component = {
   },
 
   render(h) {
+    const { default: slot } = this.$scopedSlots;
+
     return h(
       'transition-group',
       {
@@ -81,26 +83,26 @@ const component = {
           tag: 'div'
         }
       },
-      this.tostinis.map(({ id, type, message, html }, index) => {
-        return this.$scopedSlots.default
-          ? this.$scopedSlots.default({
+      this.tostinis.map(({ id, type, message, html }) => {
+        return h(
+          'div',
+          {
+            class: 'tostini',
+            key: id,
+            attrs: {
+              'data-type': type
+            },
+            domProps: !slot && {
+              [html ? 'innerHTML' : 'innerText']: message
+            }
+          },
+          slot && slot({
             type,
             message,
+            html,
             close: () => this._remove(id)
           })
-          : h(
-            'div',
-            {
-              class: 'tostini',
-              key: index,
-              attrs: {
-                'data-type': type
-              },
-              domProps: {
-                [html ? 'innerHTML' : 'innerText']: message
-              }
-            }
-          );
+        );
       })
     );
   }
