@@ -1,4 +1,4 @@
-/* v-tostini v1.3.0 | (c) Marek Sierociński and contributors | https://github.com/marverix/v-tostini/blob/master/LICENSE.md */
+/* v-tostini v1.3.1 | (c) Marek Sierociński and contributors | https://github.com/marverix/v-tostini/blob/master/LICENSE.md */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('vue')) :
   typeof define === 'function' && define.amd ? define(['vue'], factory) :
@@ -613,31 +613,48 @@
     render: function render(h) {
       var _this2 = this;
 
-      return h('transition-group', {
+      var slot = this.$scopedSlots.default;
+      /**
+       * @see https://vuejs.org/v2/guide/render-function.html#createElement-Arguments
+       */
+
+      return h( // {String | Object | Function}
+      // An HTML tag name, component options, or async function resolving to one of these
+      'transition-group', // {Object}
+      // A data object corresponding to the attributes
+      {
         class: 'tostini-plate',
         props: {
           name: this.transitionName,
           tag: 'div'
         }
-      }, this.tostinis.map(function (_ref, index) {
+      }, // {String | Array}
+      // Children VNodes, built using `createElement()`, or using strings to get 'text VNodes'.
+      this.tostinis.map(function (_ref) {
         var id = _ref.id,
             type = _ref.type,
             message = _ref.message,
             html = _ref.html;
-        return _this2.$scopedSlots.default ? _this2.$scopedSlots.default({
-          type: type,
-          message: message,
-          close: function close() {
-            return _this2._remove(id);
-          }
-        }) : h('div', {
+        // The same as above :)
+        return h('div', {
           class: 'tostini',
-          key: index,
+          key: id,
           attrs: {
             'data-type': type
           },
-          domProps: _defineProperty({}, html ? 'innerHTML' : 'innerText', message)
-        });
+
+          /**
+           * @see https://vuejs.org/v2/guide/render-function.html#The-Data-Object-In-Depth
+           */
+          domProps: !slot && _defineProperty({}, html ? 'innerHTML' : 'innerText', message)
+        }, slot && slot({
+          type: type,
+          message: message,
+          html: html,
+          close: function close() {
+            return _this2._remove(id);
+          }
+        }));
       }));
     }
   };
