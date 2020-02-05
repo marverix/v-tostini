@@ -68,9 +68,13 @@ const component = {
   render(h) {
     return h(
       'div',
-      this.tostinis.map(({ type, message, html }) => {
+      this.tostinis.map(({ id, type, message, html }) => {
         return this.$scopedSlots.default 
-          ? this.$scopedSlots.default({ type, message })
+          ? this.$scopedSlots.default({ 
+            type, 
+            message,
+            close: () => this._remove(id)
+          })
           : h(
             'div',
             {
