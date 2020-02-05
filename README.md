@@ -175,6 +175,12 @@ So this is CSS that I'm using. As you can see I'm using types:
 }
 ```
 
+## Contributors
+
+* [marverix](https://github.com/marverix)
+* [enkot](https://github.com/enkot)
+* [AndrewBogdanovTSS](https://github.com/AndrewBogdanovTSS)
+
 ## License
 
 This project is licensed under the ISC License - see the [LICENSE](LICENSE) file for details
