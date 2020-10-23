@@ -1145,7 +1145,8 @@
           class: 'tostini',
           key: id,
           attrs: {
-            'data-type': type
+            'data-type': type,
+            'role': 'alert'
           },
 
           /**
