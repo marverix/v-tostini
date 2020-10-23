@@ -1,6 +1,6 @@
 require.config({
   paths: {
-    vue: 'https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.min',
+    vue: 'https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.min',
     vTostini: '../dist/v-tostini'
   }
 });
