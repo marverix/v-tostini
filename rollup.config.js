@@ -1,97 +1,72 @@
-'use strict';
-
-import 'finka';
-import commonjs from 'rollup-plugin-commonjs';
-import resolve from 'rollup-plugin-node-resolve';
-import babel from 'rollup-plugin-babel';
-import { uglify } from 'rollup-plugin-uglify';
+import cjs from '@rollup/plugin-commonjs';
+import resolve from '@rollup/plugin-node-resolve';
+import babel from '@rollup/plugin-babel';
+import { terser } from 'rollup-plugin-terser';
 
 import $package from './package.json';
 
+const input = 'src/index.js';
 const external = Object.keys($package.dependencies || []);
 const globals = {};
 
-for(const ext of external) {
+for(let ext of external) {
   globals[ext] = ext;
 }
 
-// Common
-const config = {
-  common: {
-    input: 'src/index.js',
-    output: {
-      file: 'dist/v-tostini.js',
-      format: 'umd',
-      name: 'v-tostini',
-      banner: `/* v-tostini v${$package.version} ` +
-              '| (c) Marek Sierociński and contributors ' +
-              '| https://github.com/marverix/v-tostini/blob/master/LICENSE.md ' +
-              '*/',
-      globals
-    },
-    external
-  },
-
-  uncompressed: undefined,
-  compressed: undefined,
-
-  extensions: ['.js'],
+var output = function(min) {
+  return {
+    file: `dist/v-tostini${(min ? '.min' : '')}.js`,
+    format: 'umd',
+    name: 'v-tostini',
+    banner: `/* v-tostini v${$package.version} ` +
+            '| (c) Marek Sierociński and contributors ' +
+            '| https://github.com/marverix/v-tostini/blob/master/LICENSE.md ' +
+            '*/',
+    globals
+  };
 };
 
-const plugins = [
-  resolve({
-    extensions: config.extensions
-  }),
+var plugins = [
+  cjs(),
+  resolve(),
   babel({
-    exclude: 'node_modules/**',
+    exclude: [/\/core-js\//],
     presets: [
       [
         '@babel/env',
         {
-          modules: false,
-          targets: {
-            browsers: '> 2%, IE 11, Safari 9, not dead',
-            node: 8
-          },
+          targets: '> 2%, Firefox ESR, ie 11, safari 9',
           useBuiltIns: 'usage',
-          corejs: 2
+          corejs: 3,
+          modules: false
         }
       ]
-    ]
-  }),
-  commonjs({
-    extensions: config.extensions
+    ],
+    babelHelpers: 'bundled'
   })
 ];
 
-// Uncompressed
-config.uncompressed = Object.deepAssign({
-  output: {},
-  plugins: plugins.clone()
-}, config.common);
-
-// Compressed
-config.compressed = Object.deepAssign({
-  output: {},
-  plugins: plugins.clone()
-}, config.common);
-config.compressed.output.file = config.compressed.output.file.replace(/\.js$/, '.min.js');
-config.compressed.plugins.push(
-  uglify({
-    output: {
-      comments: (node, comment) => {
-        if (comment.type === 'comment2') {
-          // multiline comment
-          return /LICENSE|\(c\)/.test(comment.value);
-        }
-        return false;
-      }
-    }
-  })
-);
-
 // Export
 export default [
-  config.uncompressed,
-  config.compressed
+  // Uncompressed config
+  {
+    input,
+    output: output(),
+    plugins,
+    external
+  },
+
+  // Compressed config
+  {
+    input,
+    output: output(true),
+    plugins: plugins.concat([
+      terser({
+        output: {
+          comments: /license/i
+        }
+      })
+    ]),
+    external
+  }
 ];
