@@ -1,7 +1,8 @@
 # v-Tostini
 
 ![npm](https://img.shields.io/npm/v/v-tostini)
-![GitHub](https://img.shields.io/github/license/marverix/v-tostini)
+![Lint](https://img.shields.io/github/workflow/status/marverix/v-tostini/Lint?label=lint)
+![License](https://img.shields.io/github/license/marverix/v-tostini)
 
 _v-Tostini_ is really plain toast notifications mechanism for Vue.js 2.x. 
 There is no CSS included, which means that you need to add your own flavor for it.
