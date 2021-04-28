@@ -212,4 +212,4 @@ So this is CSS that I'm using. As you can see I'm using types:
 
 ## License
 
-This project is licensed under the ISC License - see the [LICENSE](LICENSE) file for details
+This project is licensed under the Apache-2.0 - see the [LICENSE](LICENSE) file for details
