@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.5.0 (2021-04-28)
+
+* Changed License to Apache-2.0
+
+## 1.4.0 (2020-10-23)
+
+* Added ARIA `alert` role
+
 ## 1.3.1 (2020-02-05)
 
 * [Structure improvements](https://github.com/marverix/v-tostini/pull/18)
