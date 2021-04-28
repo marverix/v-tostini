@@ -1,9 +1,7 @@
 # v-Tostini
 
-[![Build Status](https://img.shields.io/travis/com/marverix/v-tostini/master.svg)](https://travis-ci.com/marverix/v-tostini)
-[![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/marverix/v-tostini.svg)](https://lgtm.com/projects/g/marverix/v-tostini/context:javascript)
-[![Current Release](https://img.shields.io/github/release/marverix/v-tostini.svg)](releases)
-[![License: MIT](https://img.shields.io/badge/License-ISC-blue.svg)](LICENSE.md)
+![npm](https://img.shields.io/npm/v/v-tostini)
+![GitHub](https://img.shields.io/github/license/marverix/v-tostini)
 
 _v-Tostini_ is really plain toast notifications mechanism for Vue.js 2.x. 
 There is no CSS included, which means that you need to add your own flavor for it.
