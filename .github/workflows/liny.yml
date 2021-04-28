@@ -1,0 +1,35 @@
+name: Lint
+
+on:
+  - push
+  - pull_request
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [8.x, 10.x, 12.x, 14.x]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Load cached modules
+        id: cached-modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: node_modules-${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+
+      - name: Install dependencies
+        if: steps.cached-modules.outputs.cache-hit != 'true'
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
