@@ -2,8 +2,8 @@
 node_modules/
 *.tgz
 
-# tests
-coverage/
+# build
+dist/
 
 # IDE
 .vscode/
