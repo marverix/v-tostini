@@ -34,11 +34,14 @@ jobs:
         run: npm run build
 
       - name: Upload assets
-        uses: csexton/release-asset-action@v2
+        uses: nanoufo/action-upload-artifacts-and-release-assets@main
         with:
-          pattern: "dist/*"
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          release-url: ${{ steps.create_release.outputs.upload_url }}
+          path: "dist/*.js"
+          if-no-files-found: error
+          upload-release-files: true
+          release-upload-url: ${{ steps.create_release.outputs.upload_url }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Publish on npm
         uses: JS-DevTools/npm-publish@v1
