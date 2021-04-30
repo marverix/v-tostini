@@ -39,7 +39,7 @@ jobs:
           path: "dist/*.js"
           if-no-files-found: error
           upload-release-files: true
-          release-upload-url: ${{ steps.create_release.outputs.upload_url }}
+          release-upload-url: ${{ github.event.release.upload_url }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
